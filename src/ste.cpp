@@ -211,8 +211,11 @@ string STE::toString() {
     s.append(id);
     s.append(" symbol-set=");
     s.append(symbol_set);
-    s.append(" start=");
-    s.append(getStringStart());
+
+	if (start != NONE) {
+		s.append(" start=");
+		s.append(getStringStart());
+	}
         
     s.append("\n\t");
     s.append("activate-on-match=\n\t  ");
@@ -253,9 +256,12 @@ string STE::toANML() {
     s.append("\" ");
     s.append(" symbol-set=\"");
     s.append(bitsetToCharset(bit_column));
-    s.append("\" ");
-    s.append(" start=\"");
-    s.append(getStringStart());
+
+	if (start != NONE) {
+		s.append("\" ");
+		s.append(" start=\"");
+		s.append(getStringStart());
+	}
     s.append("\">\n");
 
     if(reporting){
